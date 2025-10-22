@@ -2858,7 +2858,8 @@
   cluster:
     byod:
       runtime_env:
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: stress_tests/placement_group_tests_compute.yaml
 
   run:
@@ -2932,7 +2933,8 @@
   cluster:
     byod:
       runtime_env:
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: tpl_64.yaml
 
   run:
@@ -3213,7 +3215,8 @@
   cluster:
     byod:
       runtime_env:
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: stress_tests/stress_tests_compute.yaml
 
   run:
@@ -3255,7 +3258,8 @@
   cluster:
     byod:
       runtime_env:
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: stress_tests/stress_tests_compute.yaml
 
   run:
@@ -3389,7 +3393,8 @@
   cluster:
     byod:
       runtime_env:
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: stress_tests/stress_tests_single_node_oom_compute.yaml
 
   run:
@@ -3553,7 +3558,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: single_node.yaml
 
   run:
@@ -3581,7 +3587,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: object_store.yaml
 
   run:
@@ -3610,7 +3617,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: object_store/small_objects.yaml
 
   run:
@@ -3634,7 +3642,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: object_store/large_objects.yaml
 
   run:
@@ -3658,7 +3667,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: distributed.yaml
 
   run:
@@ -3707,7 +3717,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: distributed.yaml
 
   run:
@@ -3736,7 +3747,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: distributed.yaml
 
   run:
@@ -3786,7 +3798,8 @@
       type: gpu
       runtime_env:
         - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
-        - RAY_enable_open_telemetry=1
+        - RAY_experimental_enable_open_telemetry_on_agent=1
+        - RAY_experimental_enable_open_telemetry_on_core=1
     cluster_compute: many_nodes.yaml
 
   run:

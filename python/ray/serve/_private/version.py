@@ -22,7 +22,6 @@ class DeploymentVersion:
         placement_group_bundles: Optional[List[Dict[str, float]]] = None,
         placement_group_strategy: Optional[str] = None,
         max_replicas_per_node: Optional[int] = None,
-        route_prefix: Optional[str] = None,
     ):
         if code_version is not None and not isinstance(code_version, str):
             raise TypeError(f"code_version must be str, got {type(code_version)}.")
@@ -38,16 +37,12 @@ class DeploymentVersion:
         self.placement_group_bundles = placement_group_bundles
         self.placement_group_strategy = placement_group_strategy
         self.max_replicas_per_node = max_replicas_per_node
-        self.route_prefix = route_prefix
         self.compute_hashes()
 
     @classmethod
-    def from_deployment_version(
-        cls, deployment_version, deployment_config, route_prefix: Optional[str] = None
-    ):
+    def from_deployment_version(cls, deployment_version, deployment_config):
         version_copy = deepcopy(deployment_version)
         version_copy.deployment_config = deployment_config
-        version_copy.route_prefix = route_prefix
         version_copy.compute_hashes()
         return version_copy
 
@@ -100,15 +95,11 @@ class DeploymentVersion:
             combined_placement_group_options
         )
         self.placement_group_options_hash = crc32(serialized_placement_group_options)
-        # Include app-level route prefix in the version hashes so changing
-        # it triggers an in-place reconfigure of running replicas.
-        serialized_route_prefix = _serialize(self.route_prefix)
 
         # If this changes, DeploymentReplica.reconfigure() will call reconfigure on the
         # actual replica actor
         self.reconfigure_actor_hash = crc32(
-            serialized_route_prefix
-            + self._get_serialized_options(
+            self._get_serialized_options(
                 [DeploymentOptionUpdateType.NeedsActorReconfigure]
             )
         )
@@ -120,7 +111,6 @@ class DeploymentVersion:
             + serialized_ray_actor_options
             + serialized_placement_group_options
             + str(self.max_replicas_per_node).encode("utf-8")
-            + serialized_route_prefix
             + self._get_serialized_options(
                 [
                     DeploymentOptionUpdateType.NeedsReconfigure,
